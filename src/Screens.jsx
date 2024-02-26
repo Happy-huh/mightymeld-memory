@@ -18,10 +18,52 @@ export const possibleTileContents = [
 
 export function StartScreen({ start }) {
   return (
-    <div>
-      <button onClick={start} className="bg-gray-400 text-white p-3">
-        Play
-      </button>
+    <div
+      style={{
+        height: "100vh",
+        width: "100vw",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <div
+        className="bg-pink-100"
+        style={{
+          color: "#db2978",
+          width: "80%",
+          height: "80%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          borderRadius: "10px",
+        }}
+      >
+        <h2
+          style={{
+            fontSize: "2.5em",
+            marginBottom: "1em",
+            marginTop: "2em",
+            fontWeight: "bolder",
+          }}
+        >
+          Memory
+        </h2>
+        <p style={{ marginBottom: "3em" }}>Flip over tiles looking for pairs</p>
+        <button
+          onClick={start}
+          className="text-white "
+          style={{
+            borderRadius: "50px",
+            padding: "3px 6px",
+            width: "90px",
+            backgroundImage: "linear-gradient(to top, #db2978, #f381bc)",
+            fontWeight: 500,
+          }}
+        >
+          Play
+        </button>
+      </div>
     </div>
   );
 }
@@ -109,12 +151,42 @@ export function PlayScreen({ end }) {
 
   return (
     <>
-      <div>
-        {getTiles(6).map((tile, i) => (
-          <Tile key={i} flip={() => flip(i)} {...tile} />
-        ))}
-      </div>
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          flexDirection: "column-reverse",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div
+          style={{
+            borderRadius: 10,
+            width: "80%",
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-around",
+            alignContent: "flex-start",
+          }}
+        >
+          {getTiles(12).map((tile, i) => (
+            <Tile key={i} flip={() => flip(i)} {...tile} />
+          ))}
+        </div>
+        <div style={{
+          paddingBottom: '3em',
+          color: '#6465f1'
+        }}>
+          Tries {' '}
+          <span style={{backgroundColor: '#5b4fc', padding: '0px 4px', borderRadius: 4}}>
       {tryCount}
+
+          </span>
+          
+        </div>
+      </div>
     </>
   );
 }

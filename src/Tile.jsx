@@ -3,32 +3,28 @@ export function Tile({ content: Content, flip, state }) {
     case "start":
       return (
         <Back
-          className="inline-block h-8 w-8 bg-blue-300 text-center"
+          className="inline-block h-8 w-8 bg-blue-300"
           flip={flip}
         />
       );
     case "flipped":
       return (
-        <Front className="inline-block h-8 w-8 bg-green-500">
+        <Front className="inline-block h-8 w-8 bg-blue-500 text-white">
           <Content
             style={{
-              display: "inline-block",
-              width: "100%",
-              height: "100%",
-              verticalAlign: "top",
+              width: "80%",
+              height: "80%",
             }}
           />
         </Front>
       );
     case "matched":
       return (
-        <Matched className="inline-block h-8 w-8 text-gray-300">
+        <Matched className="inline-block h-8 w-8 text-blue-200">
           <Content
             style={{
-              display: "inline-block",
-              width: "100%",
-              height: "100%",
-              verticalAlign: "top",
+              width: "80%",
+              height: "80%",
             }}
           />
         </Matched>
@@ -40,16 +36,40 @@ export function Tile({ content: Content, flip, state }) {
 
 function Back({ className, flip }) {
   return (
-    <div onClick={flip} className={className}>
-      ?
+    <div style={{
+      width: '20%',
+      height: '70px',
+      margin:5,
+      borderRadius: 10,
+      display: 'inline-flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }} onClick={flip} className={className}>
+      
     </div>
   );
 }
 
 function Front({ className, children }) {
-  return <div className={className}>{children}</div>;
+  return <div style={{
+      width: '20%',
+      height: '70px',
+      margin:5,
+      borderRadius: 10,
+      display: 'inline-flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }} className={className}>{children}</div>;
 }
 
 function Matched({ className, children }) {
-  return <div className={className}>{children}</div>;
+  return <div style={{
+      width: '20%',
+      height: '70px',
+      margin:5,
+      borderRadius: 10,
+      display: 'inline-flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }} className={className}>{children}</div>;
 }
